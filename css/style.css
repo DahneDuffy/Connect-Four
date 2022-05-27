@@ -1,0 +1,93 @@
+/******************************************************************************
+START Glitch hello-app default styles
+
+The styles in this section do some minimal CSS resets, set default fonts and 
+colors, and handle the layout for our footer and "Remix on Glitch" button. If
+you're new to CSS they may seem a little complicated, but you can scroll down
+to this section's matching END comment to see page-specific styles.
+******************************************************************************/
+/* Our default values set as CSS variables */
+:root {
+  --color-bg: #BDC9FF;
+  --color-text-main: #000000;
+  --color-primary: #AFECE0;
+  --wrapper-height: 87vh;
+  --image-max-width: 300px;
+  --image-margin: 3rem;
+  --font-family: "HK Grotesk";
+  --font-family-header: "HK Grotesk";
+}
+
+/* Basic page style resets */
+* {
+  box-sizing: border-box;
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+h1 {
+  padding-bottom: 2rem;
+}
+h2 {
+  padding: 2rem 0;
+}
+
+#connectBoard{
+  height: 600px;
+  width:700px;
+  display: grid;
+  grid-template-columns: repeat(7,100px);
+  justify-content: center;
+  align-items:center;
+  background-color: #1b63f4;
+/*   column-count: 7;
+  row-lines: 6;
+  border: 1px solid;
+  column-rule: 1px solid;
+  column-gap: 10px;
+  row-gap: 10px; */
+}
+
+
+#squareOne{
+  width: 60px;
+  height: 60px;
+  background-color: white;
+  margin: auto;
+}
+
+.token{
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  margin:auto;
+}
+
+.redToken{
+  background-color: red;
+}
+
+.yellowToken{
+  background-color: yellow;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+  width: 100px;
+  height: 600px;
+  border: 1px solid red;
+}
+
+.gridTile{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+  width:100px;
+  
+}
