@@ -23,23 +23,61 @@ to this section's matching END comment to see page-specific styles.
   box-sizing: border-box;
 }
 
-#container {
+body, html {
+  height: 100%;
+}
+
+.flexContainer {
+  display: flex;
+  justify-content: center;
+  height: 80%;
+}
+
+.container {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 h1 {
   padding-bottom: 2rem;
+  width: 100%;
+  text-align: center;
+  height: 10%;
+  
 }
 h2 {
   padding: 2rem 0;
 }
 
+
+.gameInfo{
+  background-color: gray;
+  margin-left: 5%;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.gameInfo h2 {
+  padding-left: 5px;
+  padding-right: 5px;
+
+}
+
+.gameBoard{
+  width: 80%;
+}
+
+
+
+
 #connectBoard{
-  height: 600px;
-  width:700px;
+  height: 100%;
+  width: 100%;
   display: grid;
-  grid-template-columns: repeat(7,100px);
+  grid-template-columns: repeat(7,14.2857%);
   justify-content: center;
   align-items:center;
   background-color: #1b63f4;
@@ -52,16 +90,16 @@ h2 {
 }
 
 
-#squareOne{
+/* #squareOne{
   width: 60px;
   height: 60px;
   background-color: white;
   margin: auto;
-}
+} */
 
 .token{
-  height: 50px;
-  width: 50px;
+  height: 50%;
+  width: 50%;
   border-radius: 50%;
   margin:auto;
 }
@@ -78,8 +116,7 @@ h2 {
   display: flex;
   flex-direction: column;
   align-self: flex-start;
-  width: 100px;
-  height: 600px;
+  height: 100%;
   border: 1px solid red;
 }
 
@@ -87,7 +124,7 @@ h2 {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100px;
-  width:100px;
+  height: 100%;
+  width: 100%;
   
 }

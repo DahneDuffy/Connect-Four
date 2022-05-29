@@ -14,6 +14,7 @@ const column4 = document.getElementById('4');
 const column5 = document.getElementById('5');
 const column6 = document.getElementById('6');
 let playerRed = true
+let gameOver = false
 let currentPlayer = "Player 1"
 //ARRANGE COLUMNS INTO ARRAY FORMAT FOR THE createGrid function
 const columnArr = [column0,column1,column2,column3,column4,column5,column6];
@@ -87,7 +88,7 @@ function createToken(column) {
   //
   console.log(`Column ${column} has been clicked`)
   // Check if the column has space for a new token
-  if (gameBoard[column][0] === 0) {
+  if (gameBoard[column][0] === 0 && !gameOver) {
     // Add token to data
     // Check if it's red's turn
     if (playerRed) {
@@ -100,17 +101,28 @@ function createToken(column) {
   }console.log(gameBoard)
 }
   
+function declareWinner(player) {
+  //End the game so more tokens can't be added
+  gameOver = true
+  const playerWins = document.querySelector('#playerWins')
+  //Add player color class to HTML element for styling
+  playerWins.classList.add(`${player}Wins`)
+  //Add winning player to the DOM
+  //Capitalize the first letter of the color (red -> Red)
+  playerWins.innerText = `${player[0].toUpperCase() + player.slice(1)} Wins!`
+}
+
+
+
 function redTurn(column) {
   //find the last instance of 0 in the column's array, and replace it with 1 for red;
   let index = gameBoard[column].lastIndexOf(0);
   gameBoard[column][index] = 1;
   updateBoard(column,index);
+  if (checkWinner(gameBoard)) declareWinner('red');
   playerRed = false;
-  setTimeout(()=>{
-    if(checkWinner(gameBoard)){
-    alert('Red Wins!')
-    }
-  },1000)
+  //Update the DOM to show it is now Yellow's turn
+  document.querySelector('#currentPlayer').innerText = 'Yellow'
 }
   
 function yellowTurn(column) {
@@ -118,13 +130,11 @@ function yellowTurn(column) {
   let index = gameBoard[column].lastIndexOf(0);
   gameBoard[column][index] = 2;
   updateBoard(column,index);
+  //Check if yellow has won
+  if(checkWinner(gameBoard)) declareWinner('yellow')
+  //Update the DOM to show it is now Red's turn
+  document.querySelector('#currentPlayer').innerText = 'Red'
   playerRed = true;
-  //used a SetTimeout to the DOM has a second to update the tokens before declaring a winner
-  setTimeout(()=>{
-    if(checkWinner(gameBoard)){
-    alert('Yellow Wins!')
-    }
-  },1000)
 }
   
 
@@ -170,6 +180,13 @@ function resetBoard(){
   [0, 0, 0, 0, 0, 0],
 ];
   playerRed = true;
+  gameOver = false;
+  //Reset DOM
+  let playerWins = document.querySelector('#playerWins')
+  playerWins.innerText = ''
+  playerWins.classList.remove(`yellowWins`)
+  playerWins.classList.remove(`redWins`)
+  document.querySelector('#currentPlayer').innerText = 'Red'
   document.querySelectorAll(".gridTile").forEach(element=>{
     element.innerHTML = '';
   })
@@ -179,12 +196,14 @@ function resetBoard(){
 
 function chkLine(a,b,c,d) {
     // Check first cell non-zero and all cells match
-    return ((a != 0) && (a ==b) && (a == c) && (a == d));
+    return ((a != 0) && (a == b) && (a == c) && (a == d));
 }
 
 
 //I'm pretty sure this captures all one conditions.  It's just a reworking of the solution found here: https://stackoverflow.com/questions/33181356/connect-four-game-checking-for-wins-js
 function checkWinner(bd) {
+  
+  
     // check vertical
     for (let c = 0; c < 7; c++){
       for (let r = 0; r < 3; r++){
@@ -224,3 +243,6 @@ function checkWinner(bd) {
 
     return false;
 }
+
+
+//there is an issue with turn structure and win condiion, maybe because of setTimeout()
