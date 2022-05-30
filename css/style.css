@@ -8,14 +8,14 @@ to this section's matching END comment to see page-specific styles.
 ******************************************************************************/
 /* Our default values set as CSS variables */
 :root {
-  --color-bg: #BDC9FF;
+  --color-bg: #bdc9ff;
   --color-text-main: #000000;
-  --color-primary: #AFECE0;
+  --color-primary: #afece0;
   --wrapper-height: 87vh;
   --image-max-width: 300px;
   --image-margin: 3rem;
-  --font-family: "HK Grotesk";
-  --font-family-header: "HK Grotesk";
+  --font-family: 'HK Grotesk';
+  --font-family-header: 'HK Grotesk';
 }
 
 /* Basic page style resets */
@@ -23,7 +23,8 @@ to this section's matching END comment to see page-specific styles.
   box-sizing: border-box;
 }
 
-body, html {
+body,
+html {
   height: 100%;
 }
 
@@ -43,14 +44,12 @@ h1 {
   width: 100%;
   text-align: center;
   height: 10%;
-  
 }
 h2 {
   padding: 2rem 0;
 }
 
-
-.gameInfo{
+.gameInfo {
   background-color: gray;
   margin-left: 5%;
   border-radius: 10px;
@@ -63,32 +62,27 @@ h2 {
 .gameInfo h2 {
   padding-left: 5px;
   padding-right: 5px;
-
 }
 
-.gameBoard{
+.gameBoard {
   width: 80%;
 }
 
-
-
-
-#connectBoard{
+#connectBoard {
   height: 100%;
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(7,14.2857%);
+  grid-template-columns: repeat(7, 14.2857%);
   justify-content: center;
-  align-items:center;
+  align-items: center;
   background-color: #1b63f4;
-/*   column-count: 7;
+  /*   column-count: 7;
   row-lines: 6;
   border: 1px solid;
   column-rule: 1px solid;
   column-gap: 10px;
   row-gap: 10px; */
 }
-
 
 /* #squareOne{
   width: 60px;
@@ -97,18 +91,18 @@ h2 {
   margin: auto;
 } */
 
-.token{
+.token {
   height: 50%;
   width: 50%;
   border-radius: 50%;
-  margin:auto;
+  margin: auto;
 }
 
-.redToken{
+.redToken {
   background-color: red;
 }
 
-.yellowToken{
+.yellowToken {
   background-color: yellow;
 }
 
@@ -120,11 +114,10 @@ h2 {
   border: 1px solid red;
 }
 
-.gridTile{
+.gridTile {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100%;
   width: 100%;
-  
 }
